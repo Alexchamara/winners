@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['merchant'])->group(function (){
         Route::get('/merchant', [MerchantController::class,'index'])->name('merchant.index');
     });
-
-    Route::post('/createmerchant',[MerchantController::class,'store'])->name('merchant.store');
+    // Route::get('/createmerchant/form',[MerchantController::class,'index'])->name('merchant.index');
+    Route::get('/createmerchant',[MerchantController::class,'store'])->name('merchant.store');
 
 });
 

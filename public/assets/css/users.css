@@ -1,0 +1,40 @@
+body{
+    text-decoration: none;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #696cff !important;
+    border-color: #696cff !important;
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4) !important;
+}
+  a{
+    text-decoration: none !important;
+  }
+  div.dataTables_wrapper {
+      width: 100%;
+      margin: 0 auto;
+  }
+  table.dataTable thead th {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+  }
+  .dataTables_scrollHead {
+        overflow: visible !important;
+    }
+    .dataTables_scroll {
+        position: relative;
+    }
+    .dataTables_scrollBody {
+        overflow-y: auto; /* Ensure vertical scrolling */
+    }
+    .display{
+      display:none;
+    }
+    .visible{
+      display:block;
+    }
+    th {
+        font-size: 2px;
+    }

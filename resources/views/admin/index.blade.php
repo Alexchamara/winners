@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('index')
 
 @section('content')
     <!-- Layout wrapper -->
@@ -79,7 +79,7 @@
             <!-- Dashboard -->
 
             <li class="menu-item active">
-                <a href="{{ url('/createmerchnat') }}" class="menu-link">
+                <a href="{{ url('/createmerchant') }}" class="menu-link">
                     <div data-i18n="Analytics">Create Merchant</div>
                 </a>
             </li>
@@ -124,7 +124,7 @@
 
 
 
-            {{-- <!-- User interface -->
+             <!-- User interface -->
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-box"></i>
@@ -226,10 +226,10 @@
                     <div data-i18n="Typography">Typography</div>
                   </a>
                 </li>
-              </ul> --}}
-            {{-- </li> --}}
+              </ul>
+             </li>
 
-            {{-- <!-- Extended components -->
+            <!-- Extended components -->
             <li class="menu-item">
               <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-copy"></i>
@@ -247,7 +247,7 @@
                   </a>
                 </li>
               </ul>
-            </li> --}}
+            </li> 
 
             {{-- <li class="menu-item">
               <a href="icons-boxicons.html" class="menu-link">
