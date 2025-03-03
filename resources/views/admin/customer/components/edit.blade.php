@@ -16,13 +16,13 @@
                     <div class="mb-3 row">
                         <label for="name{{ $customer->id }}" class="col-sm-3 col-form-label">Name <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name{{ $customer->id }}" name="name" value="{{ $customer->name }}" required>
+                            <input type="text" class="form-control" id="name{{ $customer->id }}" name="name" value="{{ $customer->user->name }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="email{{ $customer->id }}" class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="email{{ $customer->id }}" name="email" value="{{ $customer->email }}" required>
+                            <input type="email" class="form-control" id="email{{ $customer->id }}" name="email" value="{{ $customer->user->email }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">

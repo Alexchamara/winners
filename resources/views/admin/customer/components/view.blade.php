@@ -12,11 +12,11 @@
             <div class="modal-body">
                 <div class="row mb-3">
                     <div class="col-md-4 fw-bold">Name:</div>
-                    <div class="col-md-8">{{ $customer->name }}</div>
+                    <div class="col-md-8">{{ $customer->user->name }}</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4 fw-bold">Email:</div>
-                    <div class="col-md-8">{{ $customer->email }}</div>
+                    <div class="col-md-8">{{ $customer->user->email }}</div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4 fw-bold">Phone:</div>

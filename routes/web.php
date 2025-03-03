@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [CustomerController::class, 'store'])->name('store');
         Route::put('/{customer}', [CustomerController::class, 'update'])->name('update');
         Route::delete('/{customer}', [CustomerController::class, 'destroy'])->name('destroy');
+        // Route::post('/{customer}/toggle-winner', [CustomerController::class, 'toggleWinner'])->name('toggle-winner');
     });
+    Route::post('/admin/customers/{customer}/toggle-winner', [App\Http\Controllers\CustomerController::class, 'toggleWinner'])
+    ->name('admin.customers.toggle-winner');
 
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -15,10 +16,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        // Get users with player role
-        $playerRole = Role::where('name', 'player')->first();
-        $customers = $playerRole ? $playerRole->users : collect();
-        
+        $customers = Customer::with('user')->get();
         return view('admin.customer.index', compact('customers'));
     }
 
@@ -35,20 +33,27 @@ class CustomerController extends Controller
             'address' => 'required|string|max:255',
         ]);
 
-        // Create the user
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'phone' => $validated['phone'],
-            'address' => $validated['address'],
-        ]);
+        DB::transaction(function () use ($validated) {
+            // Create the user
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+            ]);
 
-        // Assign player role
-        $playerRole = Role::where('name', 'player')->first();
-        if ($playerRole) {
-            $user->roles()->attach($playerRole->id);
-        }
+            // Create the customer
+            Customer::create([
+                'user_id' => $user->id,
+                'phone' => $validated['phone'],
+                'address' => $validated['address'],
+            ]);
+
+            // Assign player role
+            $playerRole = Role::where('name', 'player')->first();
+            if ($playerRole) {
+                $user->roles()->attach($playerRole->id);
+            }
+        });
 
         return redirect()->route('admin.customers.index')
             ->with('success', 'Customer created successfully');
@@ -57,29 +62,36 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $customer)
+    public function update(Request $request, Customer $customer)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $customer->id,
+            'email' => 'required|email|unique:users,email,' . $customer->user_id,
             'phone' => 'required|string|max:20',
             'address' => 'required|string|max:255',
             'password' => 'nullable|min:8',
         ]);
 
-        $updateData = [
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'phone' => $validated['phone'],
-            'address' => $validated['address'],
-        ];
+        DB::transaction(function () use ($validated, $customer) {
+            // Update user
+            $userData = [
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+            ];
 
-        // Update password only if provided
-        if (!empty($validated['password'])) {
-            $updateData['password'] = Hash::make($validated['password']);
-        }
+            // Update password only if provided
+            if (!empty($validated['password'])) {
+                $userData['password'] = Hash::make($validated['password']);
+            }
 
-        $customer->update($updateData);
+            $customer->user->update($userData);
+
+            // Update customer
+            $customer->update([
+                'phone' => $validated['phone'],
+                'address' => $validated['address'],
+            ]);
+        });
 
         return redirect()->route('admin.customers.index')
             ->with('success', 'Customer updated successfully');
@@ -88,15 +100,41 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $customer)
+    public function destroy(Customer $customer)
     {
-        // Remove user-role relationship first
-        $customer->roles()->detach();
-        
-        // Then delete the user
-        $customer->delete();
+        DB::transaction(function () use ($customer) {
+            $user = $customer->user;
+
+            // Delete customer first (this is important for foreign key constraints)
+            $customer->delete();
+
+            // Remove role relationships
+            $user->roles()->detach();
+
+            // Delete the user
+            $user->delete();
+        });
 
         return redirect()->route('admin.customers.index')
             ->with('success', 'Customer deleted successfully');
+    }
+
+    /**
+     * Toggle winner status for a customer.
+     */
+    public function toggleWinner(Request $request, Customer $customer)
+    {
+        $validated = $request->validate([
+            'is_winner' => 'required|boolean',
+        ]);
+
+        $customer->update([
+            'is_winner' => $validated['is_winner'],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Winner status updated successfully',
+        ]);
     }
 }
