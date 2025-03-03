@@ -12,7 +12,7 @@
        <li class="nav-item">
         <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('home') }}">
         <i class="bi bi-circle"></i>
-        <span>About Us</span>
+        <span>Customer</span>
         </a>
      </li>
 
