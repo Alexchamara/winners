@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'in:user,admin,merchant'],
         ]);
@@ -47,18 +47,18 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return $this->redirectBasedOnRole($user);
+        return redirect()->route('dashboard');
     }
 
-    protected function redirectBasedOnRole($user)
-        {
-            switch ($user->role) {
-                case 'admin':
-                    return redirect()->route('admin.index');
-                case 'merchant':
-                    return redirect()->route('merchant.dashboard');
-                default:
-                    return redirect()->route('customer.dashboard');
-            }
-        }
+    // protected function redirectBasedOnRole($user)
+    // {
+    //     switch ($user->role) {
+    //         case 'admin':
+    //             return redirect()->route('admin.index');
+    //         case 'merchant':
+    //             return redirect()->route('merchant.dashboard');
+    //         default:
+    //             return redirect()->route('customer.dashboard');
+    //     }
+    // }
 }
