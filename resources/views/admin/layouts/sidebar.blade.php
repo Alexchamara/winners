@@ -14,6 +14,12 @@
                 <span>Customer</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('admin.customers.index') }}">
+               <i class="bi bi-people"></i>
+                <span>Merchant</span>
+            </a>
+        </li>
     </ul>
 </aside>
 <!-- End Sidebar-->

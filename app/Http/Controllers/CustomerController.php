@@ -18,7 +18,7 @@ class CustomerController extends Controller
         // Get users with player role
         $playerRole = Role::where('name', 'player')->first();
         $customers = $playerRole ? $playerRole->users : collect();
-        
+
         return view('admin.customer.index', compact('customers'));
     }
 
@@ -92,7 +92,7 @@ class CustomerController extends Controller
     {
         // Remove user-role relationship first
         $customer->roles()->detach();
-        
+
         // Then delete the user
         $customer->delete();
 
