@@ -1,0 +1,63 @@
+body{
+    text-decoration: none;
+  }
+  a{
+    text-decoration: none !important;
+  }
+  div.dataTables_wrapper {
+      width: 100%;
+      margin: 0 auto;
+  }
+  table.dataTable thead th {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+  }
+  .dataTables_scrollHead {
+        overflow: visible !important;
+    }
+    .dataTables_scroll {
+        position: relative;
+    }
+    .dataTables_scrollBody {
+        overflow-y: auto; /* Ensure vertical scrolling */
+    }
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Adjust spacing between checkboxes */
+        padding-top: 20px;
+        margin-top: 30px;
+        margin-left: 30px;
+        font-weight: bold;
+    }
+    .checkbox-container input[type="checkbox"] {
+        margin-right: 5px; /* Space between checkbox and label */
+        background-color: yellow;
+    }
+    .checkbox-container label {
+        margin: 0; /* Remove default margin */
+        margin-right: 30px;
+        font-size: small;
+
+    }
+    .table th {
+      text-transform: uppercase;
+      font-size: 11px;
+      
+  }
+  thead, tbody, tfoot, tr, td, th {
+      border-color: inherit;
+      border-style: solid;
+      border-width: 0;
+  }
+  .table:not(.table-dark) th {
+      color: #566a7f;
+  }
+  td {
+      display: table-cell;
+      vertical-align: inherit;
+      unicode-bidi: isolate;
+      font-size: small;
+  }

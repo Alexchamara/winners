@@ -1,0 +1,259 @@
+html,body{
+    height: 100% !important;
+    margin: 0;
+    overflow-y: auto !important;
+}
+body{
+    text-decoration: none;
+    min-height: 50vh !important;
+  }
+  div.dataTables_wrapper {
+      width: 100%;
+      margin: 0 auto;
+
+  }
+  table.dataTable thead th {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      padding: 25px 25px;
+
+
+  }
+  .dataTables_scrollHead {
+        overflow: visible !important;
+    }
+    .dataTables_scroll {
+        position: relative;
+    }
+    .dataTables_scrollBody {
+        overflow-y: auto;
+    }
+    a{
+      text-decoration: none !important;
+    }
+
+.btn-primary {
+color: #fff;
+background-color: #696cff !important;
+border-color: #696cff !important;
+box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4) !important;
+}
+
+.table th {
+text-transform: uppercase;
+font-size: 13px;
+color: #696cff !important;
+font-weight: bold !important;
+text-align: left;
+
+}
+
+thead, tbody, tfoot, tr, td, th {
+border-color: inherit;
+border-style: solid;
+border-width: 0;
+
+}
+
+
+td {
+display: table-cell;
+vertical-align: inherit;
+unicode-bidi: isolate;
+font-size: small;
+}
+.hidden
+{
+  display:none;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #696cff;
+    font-weight: bold;
+
+
+}
+td{
+    text-align: left;
+}
+
+
+
+.menu-item .menu-link {
+
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    background-color: rgba(105, 108, 255, 0.16) !important;
+    color: #696cff !important;
+}
+
+.menu-item.active .menu-link {
+    font-weight: bold !important;
+    color: red !important;
+    z-index: 20;
+}
+
+
+ul li{
+    text-decoration: none;
+}
+.input-container .col {
+    flex: 1 !important;
+    margin-right: 8px !important;
+
+}
+.btn1-primary{
+    color: white !important;
+    background-color: #696cff !important;
+ }
+
+
+.input-container .col:last-child {
+    margin-right: 100px !important; /* Removes margin for the last column */
+}
+
+
+
+
+@media (max-width: 1030px) {
+    .d-flex{
+        width: 88% !important;
+        margin-left: 10px !important;
+        align-items: flex-start !important;
+        margin-top: -22px !important;
+
+    }
+
+    .dropdown-menu {
+        padding: 5px !important;
+        margin-top: 20px !important;
+        z-index: 999;
+        padding-top: 80px !important;
+        right: -50px !important;
+        text-align: left;
+
+    }
+    .dropdown-menu-end {
+        font-size: 12px;
+        text-align: left !important;
+        line-height: 1.2 !important;
+        top: 0% !important;
+        padding-bottom: 2px !important;
+
+
+    }
+
+    .btn-primary{
+        padding: 6px 10px !important;
+
+
+    }
+    .btn1-primary::before {
+        content: "Add Customer";
+        visibility: visible;
+        background-color: #696cff;
+        color: white;
+        display: inline-block;
+        padding: 6px 10px !important;
+        top: -20px !important;
+        text-align: center;
+        position: relative;
+
+
+    }
+
+    .btn1-primary{
+        display: none;
+        visibility: hidden;
+        padding: 0;
+        margin: 0;
+    }
+    .avatar{
+        margin-top: -50px !important;
+    }
+    .dropdown-menu-end{
+        margin-left: -50px !important;
+    }
+
+
+
+}
+.d-flex1 {
+    display: flex !important;
+}
+
+
+@media (max-width: 682px) {
+    .d-flex{
+        width: 88% !important;
+        margin-left: 10px !important;
+        align-items: flex-start !important;
+        margin-top: -27px !important;
+
+    }
+
+    .dropdown-menu {
+        padding: 5px !important;
+        margin-top: 20px !important;
+        z-index: 999;
+        padding-top: 80px !important;
+        right: -50px !important;
+        text-align: left;
+
+    }
+    .dropdown-menu-end {
+        font-size: 12px;
+        text-align: left !important;
+        line-height: 1.2 !important;
+        top: 0% !important;
+        padding-bottom: 2px !important;
+
+
+    }
+
+    .btn-primary{
+        padding: 6px 10px !important;
+
+
+    }
+    .btn1-primary::before {
+        content: "Add Customer";
+        visibility: visible;
+        background-color: #696cff;
+        color: white;
+        display: inline-block;
+        padding: 6px 10px !important;
+        top: -20px !important;
+        text-align: center;
+        position: relative;
+
+
+    }
+
+    .btn1-primary{
+        display: none;
+        visibility: hidden;
+        padding: 0;
+        margin: 0;
+    }
+    .avatar{
+        margin-top: -50px !important;
+    }
+    .dropdown-menu-end{
+        margin-left: -50px !important;
+    }
+
+
+
+
+}
