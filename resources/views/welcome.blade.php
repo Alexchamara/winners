@@ -414,7 +414,7 @@
 
 <body class="bg-black min-h-screen flex items-center justify-center parallax">
     <div class="w-full max-w-4xl mx-auto p-6 relative z-10">
-        <!-- Player List Section -->
+        {{-- <!-- Player List Section -->
         <div class="mb-8 player-list-container p-5 rounded-lg">
             <h2 class="text-white font-bold mb-3 text-xl flex items-center">
                 <span class="mr-2">♦</span> Current Players <span class="ml-2">♦</span>
@@ -428,11 +428,20 @@
                 <input type="text" id="playerName" class="flex-1 px-4 py-3 rounded-lg bg-gray-900 text-white border border-purple-900 focus:outline-none" placeholder="Enter player name">
                 <button type="submit" class="px-6 py-3 rounded-lg gold-button">Add Player</button>
             </form>
+        </div> --}}
+
+        {{-- add login button --}}
+        <div class="flex justify-end mb-8">
+            @auth
+                <a href="{{ url('/dashboard') }}" class="px-6 py-3 rounded-lg gold-button">My Profile</a>
+            @else
+                <a href="{{ route('login') }}" class="px-6 py-3 rounded-lg gold-button">Login</a>
+            @endauth
         </div>
 
         <!-- Logo Section -->
         <div class="flex justify-center mb-8">
-            <img src="assetes/images/33.png" alt="Logo" class="h-48">
+            <img src="{{asset('assets/img/33.png')}}" alt="Logo" class="h-48">
         </div>
 
         <!-- Game Machine -->
